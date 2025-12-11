@@ -18,88 +18,55 @@ namespace ejercicioTelegrama
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCalcular_Click(object sender, EventArgs e)
         {
-            Alumno miAlumno = new Alumno();
-            String miAlumnoStr;
-
-            miAlumno.Nombre = aluNombre.Text;
-            miAlumno.Nota = Convert.ToInt32(aluNota.Text);
-            miAlumnoStr = aluNombre.Text + " " + aluNota.Text + (miAlumno.Aprobado ? " Aprobado" : " Suspenso") + "\n";
-            listaAlumnos.AppendText(miAlumnoStr);
-            misAlumnos.Agregar(miAlumno);
-        }
-    }
-    class Alumno
-    {
-        private string nombre;
-        private int nota;
-        public string Nombre
-        {
-            get { return nombre; }
-            set { nombre = value; }
-        }
-        public int Nota
-        {
-            get { return nota; }
-            set
+            string textoTelegrama;
+            char tipoTelegrama = ' ';
+            int numPalabras = 0;
+            double coste;
+            //Leo el telegrama
+            textoTelegrama = txtTelegrama.Text;
+            // telegrama urgente?
+            if (chkUrgente.Checked)
             {
-                if (value >= 0 && value <= 10)
-                    nota = value;
+                tipoTelegrama = 'u';
             }
-        }
-        public Boolean Aprobado
-        {
-            get
+            else
             {
-                if (nota >= 5)
-                    return true;
-                else
-                    return false;
+                tipoTelegrama = 'o';
             }
-        }
-    }
+            //Obtengo el número de palabras que forma el telegrama
+            numPalabras = textoTelegrama.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries)
+                .Length;
 
-    class Alumnos
-    {
-        private ArrayList listaAlumnos = new ArrayList();
-
-        // Agrega un nuevo alumno a la lista
-        //        
-        public void Agregar(Alumno alu)
-        {
-            listaAlumnos.Add(alu);
-        }
-
-        // Devuelve el alumno que está en la posición num
-        //
-        public Alumno Obtener(int num)
-        {
-            if (num >= 0 && num <= listaAlumnos.Count)
+            //Si el telegrama es ordinario
+            if (tipoTelegrama == 'o')
             {
-                return ((Alumno)listaAlumnos[num]);
-            }
-            return null;
-        }
-
-        // Devuelve la nota media de los alumnos
-        //
-        public float Media
-        {
-            get
-            {
-                if (listaAlumnos.Count == 0)
-                    return 0;
+                if (numPalabras <= 10)
+                {
+                    coste = 2.5;
+                }
                 else
                 {
-                    float media = 0;
-                    for (int i = 0; i < listaAlumnos.Count; i++)
-                    {
-                        media += ((Alumno)listaAlumnos[i]).Nota;
-                    }
-                    return (media / listaAlumnos.Count);
+                    coste = 0.5 * numPalabras;
                 }
             }
+            else
+            //Si el telegrama es urgente
+            {
+
+                if (numPalabras <= 10)
+                {
+                    coste = 5;
+                }
+                else
+                {
+                    coste = 5 + 0.75 * (numPalabras - 10);
+                }
+
+            }
+            txtPrecio.Text = coste.ToString() + " euros";
         }
+
     }
 }
