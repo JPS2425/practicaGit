@@ -31,9 +31,10 @@
             this.btnCalcular = new System.Windows.Forms.Button();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkUrgente = new System.Windows.Forms.CheckBox();
             this.txtTelegrama = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnCalcular
@@ -52,7 +53,6 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(279, 20);
             this.txtPrecio.TabIndex = 10;
-
             // 
             // label2
             // 
@@ -62,18 +62,6 @@
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Coste:";
-
-            // 
-            // chkUrgente
-            // 
-            this.chkUrgente.AutoSize = true;
-            this.chkUrgente.Location = new System.Drawing.Point(167, 270);
-            this.chkUrgente.Name = "chkUrgente";
-            this.chkUrgente.Size = new System.Drawing.Size(70, 17);
-            this.chkUrgente.TabIndex = 8;
-            this.chkUrgente.Text = "Urgente?";
-            this.chkUrgente.UseVisualStyleBackColor = true;
-            
             // 
             // txtTelegrama
             // 
@@ -82,7 +70,6 @@
             this.txtTelegrama.Name = "txtTelegrama";
             this.txtTelegrama.Size = new System.Drawing.Size(319, 104);
             this.txtTelegrama.TabIndex = 7;
-            
             // 
             // label1
             // 
@@ -92,17 +79,39 @@
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Texto";
-
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(167, 270);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(67, 17);
+            this.radioButton1.TabIndex = 12;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Ordinario";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(240, 270);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(63, 17);
+            this.radioButton2.TabIndex = 13;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Urgente";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chkUrgente);
             this.Controls.Add(this.txtTelegrama);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -117,9 +126,10 @@
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox chkUrgente;
         private System.Windows.Forms.TextBox txtTelegrama;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 
